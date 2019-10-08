@@ -1,0 +1,79 @@
+
+// Google Fonts
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
+
+// Font Variables
+$roboto-slab: 'Roboto Slab', serif;   
+$open-sans: 'Open Sans', sans-serif;
+$body-font: $open-sans;
+$header-font: $body-font;
+
+.Cell {
+    text-align: left;
+  }
+  .CellR {
+    text-align: right;
+  }
+  /* Include CSS Normalize */
+  
+  $primary-color: #008cba;
+  $gray-color: #ddd;
+  $medium-up: 600px;
+  $large-up: 1000px;
+  $global-radius: 4px;
+  
+  
+  @mixin heading-font-regular {
+      // font-family: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;;
+  }
+  ///BASIC TABLE STYLING
+  .dt {
+      border-collapse: collapse;
+      width: 99.9%;
+      float: left;
+      
+     margin: 0 0 2em;
+      thead {
+          border-bottom: 0px solid $primary-color;
+          th {
+              padding: .35em .75em;
+             // font-weight: 400;
+              text-align: left;
+              @include heading-font-regular;
+              // font-size: 1.25em;
+          }
+    }
+  
+      tbody {
+          height: 100px !important;
+          border-bottom: 0px solid $primary-color;
+          tr {
+              border: 1px solid #ddd;
+              td {
+          padding: .35em .75em ;
+          text-transform: capitalize;
+          border: 1px solid #ddd;
+              }
+              td:first-child {
+                font-weight: bold;
+            }
+          }
+          tr:nth-child(odd){
+              background-color: #e9e9e9;
+            }
+      }
+  
+      tfoot {
+          td {
+        padding: 0.35em 0 .35em;
+              text-align: left;
+              @include heading-font-regular;
+              font-size: 1.25em;
+          }
+      }
+  }
+  
+  .scrollY{
+      max-height: 333px !important;
+      overflow-y: auto;
+  }

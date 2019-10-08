@@ -1,0 +1,8 @@
+.breadcrumb {
+  position: relative;
+  @include borders($breadcrumb-borders);
+}
+
+.breadcrumb {
+  border-radius: 0;
+}
