@@ -31,7 +31,7 @@ import { getAuthHeader, instance, errors, getUniqueKeys, yAxisFormatter, formate
 import Linechart from './../../components/Charts/Commons/Linechart';
 import DashboardPiechart from './../../components/Charts/Commons/DashboardPiechart';
 import RadialBarchart from './../../components/Charts/Commons/RadialBarChart';
-import { barBgColors, colorIMEIsPairing, progressBarColors, statusColors, pairStatusColors, statusColorsForBlueBG, statusColorArray } from './../../utilities/chart_colors';
+import { barBgColors, colorIMEIsPairing, progressBarColors, statusColorsForBlueBG, statusColorArray } from './../../utilities/chart_colors';
 import HeaderCards from '../../components/Cards/HeaderCards';
 
 class Dashboard extends PureComponent {
@@ -213,6 +213,16 @@ class Dashboard extends PureComponent {
         <div className="search-box animated fadeIn">
                   { apiFetched &&
           <article className="overview">
+            <div className="last-updated" 
+              style={{ 
+                textAlign: 'right',
+                position: 'fixed',
+                top: '18px',
+                right: '160px',
+                color: '#fff',
+                zIndex: '1030'
+              }}
+            >Last Updated: 2019/10/09 03:50 pm</div>
             <Row>
               <Col xl={2} lg={3} md={4} sm={6}><HeaderCards backgroundColor="#0B6EDE" cardTitle="Total IMEIs" cardText={totalIMEIs.total_core_imeis} avg={totalIMEIs.monthly_total_imeis_avg} trend={totalIMEIs.total_trend_up} percentage={totalIMEIs.total_avg_trend}/></Col>
               <Col xl={2} lg={3} md={4} sm={6}><HeaderCards backgroundColor="#0093C7" cardTitle="Total Valid IMEIs" cardText={compliantIMEIs.core_compliant_imeis} avg={compliantIMEIs.monthly_compliant_imeis_avg} trend={compliantIMEIs.compliant_trend_up} percentage={compliantIMEIs.compliant_avg_trend}/></Col>
@@ -229,7 +239,10 @@ class Dashboard extends PureComponent {
               {/* <div className="column-row"> */}
               <Row>
                 <Col xl={3} lg={4} md={6}>
-                  <div className="box-bgwhite box-shadow radius-p75rem">
+                  <div className="column-header" style={{ backgroundColor: '#ED6364' }}>
+                    <h6>DIRBS Core</h6>
+                  </div>
+                  <div className="box-bgwhite box-shadow radius-p75rem" style={{ border: '#ED6364 1px solid' }}>
 
                     <div className="box-item">
                       <div className="eq-height-box">
@@ -279,7 +292,7 @@ class Dashboard extends PureComponent {
                       </div>
                     </div>
 
-                    <div className="box-item" style={{ border: '#ED6364 1px solid', borderTop: '#ED6364 8px solid', borderRadius: "8px"}}>
+                    <div className="box-item">
                       <div className="eq-height-box">
                       <div className="eq-height">
 
@@ -310,9 +323,12 @@ class Dashboard extends PureComponent {
                   </div>
                 </Col>
                 <Col xl={3} lg={4} md={6}>
-                  <div className="box-bgwhite box-shadow radius-p75rem">
+                  <div className="column-header" style={{ backgroundColor: '#0093C7' }}>
+                    <h6>Device Registration Subsystem</h6>
+                  </div>
+                  <div className="box-bgwhite box-shadow radius-p75rem" style={{ border: '#0093C7 1px solid' }}>
 
-                    <div className="box-item" style={{ backgroundColor: '#0093C7', borderRadius: "0.75rem", color: 'white'}}>
+                    <div className="box-item">
                       <div className="eq-height-box">
                       <div className="eq-height">
 
@@ -367,7 +383,7 @@ class Dashboard extends PureComponent {
                       </div>
                     </div>
 
-                    <div className="box-item" style={{ border: '#0093C7 1px solid', borderTop: '#0093C7 8px solid', borderRadius: "8px"}}>
+                    <div className="box-item">
                       <div className="eq-height-box">
                       <div className="eq-height">
 
@@ -406,7 +422,10 @@ class Dashboard extends PureComponent {
                   </div>
                 </Col>
                 <Col xl={3} lg={4} md={6}>
-                  <div className="box-bgwhite box-shadow radius-p75rem">
+                  <div className="column-header" style={{ backgroundColor: '#0BD49C' }}>
+                    <h6>Device Pairing Subsystem</h6>
+                  </div>
+                  <div className="box-bgwhite box-shadow radius-p75rem" style={{ border: '#0BD49C 1px solid' }}>
 
                     <div className="box-item">
                       <div className="eq-height-box">
@@ -459,7 +478,7 @@ class Dashboard extends PureComponent {
                       </div>
                     </div>
 
-                    <div className="box-item" style={{ border: '#0BD49C 1px solid', borderTop: '#0BD49C 8px solid', borderRadius: "8px"}}>
+                    <div className="box-item">
                       <div className="eq-height-box">
                       <div className="eq-height">
 
@@ -489,7 +508,10 @@ class Dashboard extends PureComponent {
                   </div>
                 </Col>
                 <Col xl={3} lg={4} md={6}>
-                  <div className="box-bgwhite box-shadow radius-p75rem">
+                  <div className="column-header" style={{ backgroundColor: '#FEAC55' }}>
+                    <h6>Lost/Stolen Device Subsystem</h6>
+                  </div>
+                  <div className="box-bgwhite box-shadow radius-p75rem" style={{ border: '#FEAC55 1px solid' }}>
 
                     <div className="box-item">
                       <div className="eq-height-box">
@@ -541,7 +563,7 @@ class Dashboard extends PureComponent {
                       </div>
                     </div>
 
-                    <div className="box-item" style={{ border: '#FEAC55 1px solid', borderTop: '#FEAC55 8px solid', borderRadius: "8px"}}>
+                    <div className="box-item">
                       <div className="eq-height-box">
                       <div className="eq-height">
 
