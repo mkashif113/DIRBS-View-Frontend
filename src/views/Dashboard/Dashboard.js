@@ -76,7 +76,8 @@ class Dashboard extends PureComponent {
       nonCompliantIMEIs: {},
       pairedIMEIs: {},
       reportedDevices: {},
-      registeredIMEIs: {}
+      registeredIMEIs: {},
+      dashboardLastUpdate: null
     }
     this.getDashBoardDataFromServer = this.getDashBoardDataFromServer.bind(this);
     this.updateTokenHOC = this.updateTokenHOC.bind(this);
@@ -186,7 +187,8 @@ class Dashboard extends PureComponent {
                   totalB16Count: response.data.B16_lsds_devices_status.total_devices,
                   uniqueB17: uniqueB17Trend,
                   dashBoard11Data: response.data.B17_lsds_devices_trend.lsds_six_months_trend,
-                  dashBoard12Data: response.data.B18_lsds_top_brands
+                  dashBoard12Data: response.data.B18_lsds_top_brands,
+                  dashboardLastUpdate: response.data.dashboard_updation_started
                    });
               }
           })
@@ -205,7 +207,7 @@ class Dashboard extends PureComponent {
   }
 
   render() {
-    const {apiFetched, dashBoard1Data, dashBoard2Data, dashBoard3Data, dashBoard4Data, dashBoard5Data, dashBoard6Data, dashBoardTotalData, loading3, totalB16Count, approvedIMEIB10Count, dashBoard7Data, dashBoard8Data, dashBoard9Data, dashBoard10Data, dashBoard11Data, dashBoard12Data, uniqueB8, granularity, totalIMEIs, compliantIMEIs, nonCompliantIMEIs, approvedB10Count, pairedIMEIs, reportedDevices, registeredIMEIs, totalB7Count, totalB9Count, totalB10Count, detailsB10, uniqueB17, operatorsArray} = this.state;
+    const {apiFetched, dashBoard1Data, dashBoard2Data, dashBoard3Data, dashBoard4Data, dashBoard5Data, dashBoard6Data, dashBoardTotalData, loading3, totalB16Count, approvedIMEIB10Count, dashBoard7Data, dashBoard8Data, dashBoard9Data, dashBoard10Data, dashBoard11Data, dashBoard12Data, uniqueB8, granularity, totalIMEIs, compliantIMEIs, nonCompliantIMEIs, approvedB10Count, pairedIMEIs, reportedDevices, registeredIMEIs, totalB7Count, totalB9Count, totalB10Count, detailsB10, uniqueB17, operatorsArray, dashboardLastUpdate} = this.state;
     const colorClasses = ['bar1', 'bar2', 'bar3', 'bar4'];
     const stolenBarClasses = ['stolen-bar1', 'stolen-bar2', 'stolen-bar3'];
     return (
@@ -217,12 +219,13 @@ class Dashboard extends PureComponent {
               style={{ 
                 textAlign: 'right',
                 position: 'fixed',
-                top: '18px',
+                top: '16px',
                 right: '160px',
                 color: '#fff',
+                fontSize: '1rem',
                 zIndex: '1030'
               }}
-            >Last Updated: 2019/10/09 03:50 pm</div>
+            ><span>Last Updated: </span>{dashboardLastUpdate}</div>
             <Row>
               <Col xl={2} lg={3} md={4} sm={6}><HeaderCards backgroundColor="#0B6EDE" cardTitle="Total IMEIs" cardText={totalIMEIs.total_core_imeis} avg={totalIMEIs.monthly_total_imeis_avg} trend={totalIMEIs.total_trend_up} percentage={totalIMEIs.total_avg_trend}/></Col>
               <Col xl={2} lg={3} md={4} sm={6}><HeaderCards backgroundColor="#0093C7" cardTitle="Total Valid IMEIs" cardText={compliantIMEIs.core_compliant_imeis} avg={compliantIMEIs.monthly_compliant_imeis_avg} trend={compliantIMEIs.compliant_trend_up} percentage={compliantIMEIs.compliant_avg_trend}/></Col>
@@ -334,11 +337,12 @@ class Dashboard extends PureComponent {
 
                       <div className="box-item-header">
                         <h6 className="item-h6">Total IMEIs</h6>
+                        <h5 className="item-h5">{yAxisFormatter(totalB10Count)}</h5>
                       </div>
 
                       <div className="box-item-body">
                         <div className="box-list">
-                          <h5 className="item-h5" style={{color: '#0BD49C'}}>{yAxisFormatter(totalB10Count)}</h5>
+                          <h5 className="item-h5"></h5>
                           <div className="h5-list">
                             {Object.keys(detailsB10).map((key) => {
                               return (
