@@ -31,7 +31,7 @@ import { getAuthHeader, instance, errors, getUniqueKeys, yAxisFormatter, formate
 import Linechart from './../../components/Charts/Commons/Linechart';
 import DashboardPiechart from './../../components/Charts/Commons/DashboardPiechart';
 import RadialBarchart from './../../components/Charts/Commons/RadialBarChart';
-import { barBgColors, colorIMEIsPairing, progressBarColors, statusColors, pairStatusColors, statusColorsForBlueBG, statusColorArray } from './../../utilities/chart_colors';
+import { barBgColors, colorIMEIsPairing, progressBarColors, statusColorsForBlueBG, statusColorArray } from './../../utilities/chart_colors';
 import HeaderCards from '../../components/Cards/HeaderCards';
 
 class Dashboard extends PureComponent {
@@ -199,7 +199,7 @@ class Dashboard extends PureComponent {
   }
 
   render() {
-    const {apiFetched, OperatorWiseIMEIsData, OperatorWiseTrendData, OperatorWiseBlockingData, TotalIMEIsData, RegisteredDeviceTechnologyData, TopRegisteredBrandsData, dashBoardTotalData, loading3, TotalLostStolenCount, approvedIMEIB10Count, PairingTypesData, ActivePairsData, PairsClassificationData, DeviceStatusData, DeviceTrendData, MostStolenBrandsData, uniqueOperatorWiseTrend, granularity, totalIMEIs, compliantIMEIs, nonCompliantIMEIs, ApprovedIMEIsCount, pairedIMEIs, reportedDevices, registeredIMEIs, TotalOperatorWiseIMEIsCount, TotalOperatorWiseBlockingCount, TotalIMEIsCount, detailIMEIs, uniqueLostStolenDeviceTrend, operatorsArray} = this.state;
+    const {apiFetched, OperatorWiseIMEIsData, OperatorWiseTrendData, OperatorWiseBlockingData, TotalIMEIsData, RegisteredDeviceTechnologyData, TopRegisteredBrandsData, dashBoardTotalData, TotalLostStolenCount, approvedIMEIB10Count, PairingTypesData, ActivePairsData, PairsClassificationData, DeviceStatusData, DeviceTrendData, MostStolenBrandsData, uniqueOperatorWiseTrend, granularity, totalIMEIs, compliantIMEIs, nonCompliantIMEIs, ApprovedIMEIsCount, pairedIMEIs, reportedDevices, registeredIMEIs, TotalOperatorWiseIMEIsCount, TotalOperatorWiseBlockingCount, TotalIMEIsCount, detailIMEIs, uniqueLostStolenDeviceTrend, operatorsArray} = this.state;
     const colorClasses = ['bar1', 'bar2', 'bar3', 'bar4'];
     const stolenBarClasses = ['stolen-bar1', 'stolen-bar2', 'stolen-bar3'];
     return (
