@@ -32,10 +32,11 @@ import { Card, CardTitle, CardText } from 'reactstrap';
 const HeaderCards = (props) => {
   const { backgroundColor, cardTitle, cardText, avg, trend, percentage } = props;
   const padding = avg ? '9px 5px' : '0'
+  const num = parseInt(cardText);
   return (
       <Card body inverse style={{ backgroundColor: backgroundColor, borderRadius: "8px", padding: padding}}>
                 <CardTitle> {cardTitle} </CardTitle>
-                <CardText><CountUp end={cardText} duration={8} formattingFn={(e) => e.toLocaleString() } />
+                <CardText><CountUp end={num} duration={8} formattingFn={(e) => e.toLocaleString() } />
                 </CardText>
                 { avg &&
                   <div className="desc-txt">

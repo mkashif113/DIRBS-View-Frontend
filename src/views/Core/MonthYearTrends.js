@@ -179,8 +179,7 @@ class MonthYearTrends extends PureComponent {
         if(response.data.message) {
         } else {
           const retrievedChartConfig = response.data.config;
-          console.log(retrievedChartConfig);
-          if(retrievedChartConfig !== undefined && retrievedChartConfig !== null)
+                if(retrievedChartConfig !== undefined && retrievedChartConfig !== null)
           {
             if(retrievedChartConfig.length !== 0)
             {

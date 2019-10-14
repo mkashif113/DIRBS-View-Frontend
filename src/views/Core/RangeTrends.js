@@ -28,7 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import React, { PureComponent } from 'react';
 import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import SearchForm from './../../components/Form/SearchForm';
-import {unique_437_colors, getAuthHeader, instance, errors, getUniqueKeys, yAxisKeysCleaning, FormatDataForDataTable, getUserRole, getUserType, replaceCharacters, reorderData, scrollOsetTopPlus, fixFilOsetHeightMinus} from "./../../utilities/helpers";
+import {unique_437_colors, getAuthHeader, instance, errors, getUniqueKeys, yAxisKeysCleaning, FormatDataForDataTable, getUserRole, getUserType, replaceCharacters, scrollOsetTopPlus, fixFilOsetHeightMinus} from "./../../utilities/helpers";
 import Barchart from './../../components/Charts/Commons/Barchart';
 import Linechart from './../../components/Charts/Commons/Linechart';
 import DataTable from './../../components/DataTable/DataTable';
@@ -165,8 +165,7 @@ class Trends extends PureComponent {
         if(response.data.message) {
         } else {
           const retrievedChartConfig = response.data.config;
-          console.log(retrievedChartConfig);
-          if(retrievedChartConfig !== undefined && retrievedChartConfig !== null)
+                if(retrievedChartConfig !== undefined && retrievedChartConfig !== null)
           {
             if(retrievedChartConfig.length !== 0)
             {
