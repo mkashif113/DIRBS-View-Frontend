@@ -189,7 +189,7 @@ class Dashboard extends PureComponent {
           })
   }
 
-  componentWillMount()
+  UNSAFE_componentWillMount()
   {
     instance.get('/mno-names')
     .then(response => {

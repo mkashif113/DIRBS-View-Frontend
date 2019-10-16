@@ -34,7 +34,7 @@ import Linechart from './../../components/Charts/Commons/Linechart';
 import DataTable from './../../components/DataTable/DataTable';
 import SearchFilters from "./../../components/Form/SearchFilters";
 import {SearchInfo} from "./../../components/Help/SearchInfo";
-import { blueColors, SingleBarColors7, StackColors15, multiColorStack} from './../../utilities/chart_colors';
+import { blueColors, StackColorsSkin, StackColorsCombination, multiColorStack} from './../../utilities/chart_colors';
 import HeaderCards from './../../components/Cards/HeaderCards';
 import { numberOfPermanentPairs, topModelsbyPairedDevices, numOfDevicesPaired, topBrandByPairedDevices, numberofPairsCreatedByType, numberofPairsDeletedByType, devicePairedByTech, noOfSimChanged, identifierStatsByNetwork } from './../../utilities/reportsInfo';
 import svgSymbol from './../../images/svg_symbol.svg';
@@ -639,10 +639,10 @@ showHideFilters = () =>
                   > 
             {/* Here we are rendering reusable charts and passing them props according to the need. (Title, loading, data, xAxis and yAxes are the only mandatory props)   */}
                     <div name='dpsTotalPermanentPairsKey' key="dpsTotalPermanentPairsKey" className={deletedObj.dpsTotalPermanentPairsKey === true && 'hidden'}>
-                    <Linechart cardClass="card-success" title="Number of Permanent Pairs" loading={dpsTotalPermanentPairsLoading} data={dpsTotalPermanentPairsData} xAxis="x_axis" yAxisLabel="Count of pairs" yAxes={["y_axis"]} customName="Count" colorArray={StackColors15.slice(5)} granularity={granularity} info={numberOfPermanentPairs} showLegend="false"  heightProp={this.getElementHeight(document.getElementsByName('dpsTotalPermanentPairsKey')[0])} removeChart={this.onRemoveItem} chartGridId={'dpsTotalPermanentPairsKey'}/>
+                    <Linechart cardClass="card-success" title="Number of Permanent Pairs" loading={dpsTotalPermanentPairsLoading} data={dpsTotalPermanentPairsData} xAxis="x_axis" yAxisLabel="Count of pairs" yAxes={["y_axis"]} customName="Count" colorArray={StackColorsCombination.slice(5)} granularity={granularity} info={numberOfPermanentPairs} showLegend="false"  heightProp={this.getElementHeight(document.getElementsByName('dpsTotalPermanentPairsKey')[0])} removeChart={this.onRemoveItem} chartGridId={'dpsTotalPermanentPairsKey'}/>
                     </div>
                     <div name='dpsNoOfDevicesKey' key="dpsNoOfDevicesKey" className={deletedObj.dpsNoOfDevicesKey === true && 'hidden'}>
-                    <Linechart cardClass="card-primary" title="Number of Devices Paired " loading={dpsNoOfDevicesLoading} data={dpsNoOfDevicesData} xAxis="x_axis" yAxisLabel="Total count of devices" yAxes={["devices"]} colorArray={SingleBarColors7} granularity={granularity} info={numOfDevicesPaired}  showLegend="false" heightProp={this.getElementHeight(document.getElementsByName('dpsNoOfDevicesKey')[0])} removeChart={this.onRemoveItem} chartGridId={'dpsNoOfDevicesKey'}/>
+                    <Linechart cardClass="card-primary" title="Number of Devices Paired " loading={dpsNoOfDevicesLoading} data={dpsNoOfDevicesData} xAxis="x_axis" yAxisLabel="Total count of devices" yAxes={["devices"]} colorArray={StackColorsSkin} granularity={granularity} info={numOfDevicesPaired}  showLegend="false" heightProp={this.getElementHeight(document.getElementsByName('dpsNoOfDevicesKey')[0])} removeChart={this.onRemoveItem} chartGridId={'dpsNoOfDevicesKey'}/>
                     </div>
                     <div name='dpsTopBrandsKey' key="dpsTopBrandsKey" className={deletedObj.dpsTopBrandsKey === true && 'hidden'}>
                     <Barchart cardClass="card-info" title="Top Paired Brands" loading={dpsTopBrandsLoading} data={dpsTopBrandsData} xAxis="x_axis" yAxisLabel="Number of Devices" yAxes={topBrands} colorArray={multiColorStack} granularity={granularity} info={topBrandByPairedDevices}  heightProp={this.getElementHeight(document.getElementsByName('dpsTopBrandsKey')[0])} removeChart={this.onRemoveItem} chartGridId={'dpsTopBrandsKey'}/>

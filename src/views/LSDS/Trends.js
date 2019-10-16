@@ -34,7 +34,7 @@ import Linechart from './../../components/Charts/Commons/Linechart';
 import Areachart from './../../components/Charts/Commons/AreaChart';
 import SearchFilters from "./../../components/Form/SearchFilters";
 import {SearchInfo} from "./../../components/Help/SearchInfo";
-import { stackBar20, multiColorStack, BoxesColors } from './../../utilities/chart_colors';
+import { stackBarTwentyColors, multiColorStack, BoxesColors } from './../../utilities/chart_colors';
 import HeaderCards from '../../components/Cards/HeaderCards';
 import { noOfReportedDevices, noOfTopStolenBrands, statusOfReportedDevices, topModelsbyReportedDevices, noOfLostStolenDevices } from './../../utilities/reportsInfo';
 import svgSymbol from './../../images/svg_symbol.svg';
@@ -476,7 +476,7 @@ showHideFilters = () =>
                       <Linechart cardClass="card-warning" title="Number of Reported Devices" loading={lsdsTotalReportedDevicesLoading} data={lsdsTotalReportedDevicesData} xAxis="x_axis" yAxisLabel="Total number of devices" yAxes={["unique_devices"]}  colorArray={this.getColorArray(32)} granularity={granularity} info={noOfReportedDevices} showLegend="false" heightProp={this.getElementHeight(document.getElementsByName('lsdsTotalReportedDevicesKey')[0])} removeChart={this.onRemoveItem} chartGridId={'lsdsTotalReportedDevicesKey'}/>
                     </div>
                     <div name='lsdsCaseStatusKey' key="lsdsCaseStatusKey" className={deletedObj.lsdsCaseStatusKey === true && 'hidden'}>
-                      <Barchart cardClass="card-info" title="Status of Reported Devices" heightProp={this.getElementHeight(document.getElementsByName('lsdsCaseStatusKey')[0])} loading={lsdsCaseStatusLoading} data={lsdsCaseStatusData} xAxis="x_axis" yAxisLabel="Number of devices reported by users" yAxes={uniqueStatus} yAxesComposite={["Pending","Blocked", "Recovered"]} colorArray={stackBar20.slice(4)} granularity={granularity}  info={statusOfReportedDevices} removeChart={this.onRemoveItem} chartGridId={'lsdsCaseStatusKey'}/>
+                      <Barchart cardClass="card-info" title="Status of Reported Devices" heightProp={this.getElementHeight(document.getElementsByName('lsdsCaseStatusKey')[0])} loading={lsdsCaseStatusLoading} data={lsdsCaseStatusData} xAxis="x_axis" yAxisLabel="Number of devices reported by users" yAxes={uniqueStatus} yAxesComposite={["Pending","Blocked", "Recovered"]} colorArray={stackBarTwentyColors.slice(4)} granularity={granularity}  info={statusOfReportedDevices} removeChart={this.onRemoveItem} chartGridId={'lsdsCaseStatusKey'}/>
                     </div>
                     <div name='lsdsTopStolenBrandsKey' key="lsdsTopStolenBrandsKey" className={deletedObj.lsdsTopStolenBrandsKey === true && 'hidden'}>
                       <Barchart cardClass="card-danger" title="Top Stolen Brands" heightProp={this.getElementHeight(document.getElementsByName('lsdsTopStolenBrandsKey')[0])} loading={lsdsTopStolenBrandsLoading} data={lsdsTopStolenBrandsData} yAxisLabel="Total number of devices reported" yAxes={uniqueBrands} xAxis="x_axis"  colorArray={multiColorStack} granularity={granularity}  info={noOfTopStolenBrands} removeChart={this.onRemoveItem} chartGridId={'lsdsTopStolenBrandsKey'}/>
