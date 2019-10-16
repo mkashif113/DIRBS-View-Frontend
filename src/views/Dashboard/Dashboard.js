@@ -215,17 +215,7 @@ class Dashboard extends PureComponent {
         <div className="search-box animated fadeIn">
                   { apiFetched &&
           <article className="overview">
-            <div className="last-updated" 
-              style={{ 
-                textAlign: 'right',
-                position: 'fixed',
-                top: '16px',
-                right: '160px',
-                color: '#fff',
-                fontSize: '1rem',
-                zIndex: '1030'
-              }}
-            ><span>Last Updated: </span>{dashboardLastUpdate}</div>
+            <div className="last-updated"><span>Last Updated: </span>{dashboardLastUpdate}</div>
             <Row>
               <Col xl={2} lg={3} md={4} sm={6}><HeaderCards backgroundColor="#0B6EDE" cardTitle="Total IMEIs" cardText={totalIMEIs.total_core_imeis} avg={totalIMEIs.monthly_total_imeis_avg} trend={totalIMEIs.total_trend_up} percentage={totalIMEIs.total_avg_trend}/></Col>
               <Col xl={2} lg={3} md={4} sm={6}><HeaderCards backgroundColor="#0093C7" cardTitle="Total Valid IMEIs" cardText={compliantIMEIs.core_compliant_imeis} avg={compliantIMEIs.monthly_compliant_imeis_avg} trend={compliantIMEIs.compliant_trend_up} percentage={compliantIMEIs.compliant_avg_trend}/></Col>
