@@ -40,6 +40,7 @@ import { noOfReportedDevices, noOfTopStolenBrands, statusOfReportedDevices, topM
 import svgSymbol from './../../images/svg_symbol.svg';
 import { Responsive, WidthProvider } from "react-grid-layout";
 import _ from 'lodash';
+let currentX, currentY, initialX, initialY, xOffset = 0, yOffset = 0;
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 class Trends extends PureComponent {
@@ -47,6 +48,9 @@ class Trends extends PureComponent {
     super(props);
     this.state = {
       active: false,
+      dragActive: false,
+      dragItem: null,
+      isDrag: false,
       fading: false,
       isShowingFilters: true,
       disableSaveButton: true,
@@ -98,6 +102,17 @@ class Trends extends PureComponent {
     window.addEventListener('scroll', this.handleScroll);
     this.setState({ mounted: true });
     this.getChartConfigFromServer();
+    let dragItem;
+    if (this.state.apiFetched) {
+      dragItem = document.querySelector(".button-config-chart");
+      this.setState({ dragItem });
+    }
+    document.addEventListener("touchstart", this.dragStart, false);
+    document.addEventListener("touchend", this.dragEnd, false);
+    document.addEventListener("touchmove", this.drag, false);
+    document.addEventListener("mousedown", this.dragStart, false);
+    document.addEventListener("mouseup", this.dragEnd, false);
+    document.addEventListener("mousemove", this.drag, false);
   }
 
   componentDidUpdate() {
@@ -105,12 +120,62 @@ class Trends extends PureComponent {
     this.state.scroll > this.state.top ? 
     paddDiv.style.paddingTop = `${this.state.height}px` :
     paddDiv.style.paddingTop = 0;
+    let dragItem;
+    if (this.state.apiFetched) {
+      dragItem = document.querySelector(".button-config-chart");
+      this.setState({ dragItem });
+    }
   }
 
-  _onClick = () => {
-    this.setState({ 
-      active: !this.state.active 
-    });
+  dragStart = (e) => {
+    if (e.type === "touchstart") {
+      initialX = e.touches[0].clientX - xOffset;
+      initialY = e.touches[0].clientY - yOffset;
+    } else {
+      initialX = e.clientX - xOffset;
+      initialY = e.clientY - yOffset;
+    }
+    if (this.state.dragItem !== null && e.target === this.state.dragItem) {
+      this.setState({ dragActive: true });
+    }
+  }
+
+  dragEnd = (e) => {
+    initialX = currentX;
+    initialY = currentY;
+    this.setState({ dragActive: false });
+    if(e.target === this.state.dragItem && this.state.isDrag === false) {
+      this.setState({ 
+        active: !this.state.active 
+      });
+    } else {
+      this.setState({ isDrag: false });
+    }
+  }
+
+  drag = (e) => {
+    if (this.state.dragActive) {
+      this.setState({ isDrag: true });
+
+      e.preventDefault();
+    
+      if (e.type === "touchmove") {
+        currentX = e.touches[0].clientX - initialX;
+        currentY = e.touches[0].clientY - initialY;
+      } else {
+        currentX = e.clientX - initialX;
+        currentY = e.clientY - initialY;
+      }
+
+      xOffset = currentX;
+      yOffset = currentY;
+      this.setTranslate(currentX, currentY, this.state.dragItem);
+      
+    }
+  }
+
+  setTranslate = (xPos, yPos, el) => {
+    el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
   }
 
   onBreakpointChange(breakpoint) {
@@ -209,6 +274,12 @@ class Trends extends PureComponent {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+document.removeEventListener("touchstart", this.dragStart, false);
+    document.removeEventListener("touchend", this.dragEnd, false);
+    document.removeEventListener("touchmove", this.drag, false);
+    document.removeEventListener("mousedown", this.dragStart, false);
+    document.removeEventListener("mouseup", this.dragEnd, false);
+    document.removeEventListener("mousemove", this.drag, false);
   }
 
   handleScroll() {
@@ -450,8 +521,7 @@ showHideFilters = () =>
                     onClick={this.resetChartConfig}
                   >Reset</button>
                   <button 
-                    className={this.state.fading ? 'button--large btn-fading' : 'button--large'}
-                    onClick={this._onClick} 
+                    className={this.state.fading ? 'button--large btn-fading' : 'button--large'} 
                     style={this.state.active ? { transform: 'scale(1)' } : { transform: 'scale(0.8333)' }}
                   >
                     <span className={this.state.active ? 'icon active' : 'icon'} />
