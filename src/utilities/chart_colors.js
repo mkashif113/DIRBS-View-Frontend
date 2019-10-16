@@ -229,7 +229,7 @@ export const progressBarColors = [
 
 export const statusColors = [ "#0093C7", "#0BD49C" ,"#ED6364"]
 
-export const statusColorsForBlueBG = [  "#D6D6D6" ,"#ED6364",  "#ffff87"]
+export const statusColorsForBlueBG = [  "#0093C7" ,"#ED6364",  "#ffff87"]
 
 export const pairStatusColors = [
     "#0093C7", "#0BD49C", "#ED6364", "#FEAC55"
