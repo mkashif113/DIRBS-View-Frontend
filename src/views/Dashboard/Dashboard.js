@@ -200,7 +200,7 @@ class Dashboard extends PureComponent {
   }
 
   render() {
-    const {apiFetched, OperatorWiseIMEIsData, OperatorWiseTrendData, OperatorWiseBlockingData, TotalIMEIsData, RegisteredDeviceTechnologyData, TopRegisteredBrandsData, dashBoardTotalData, TotalLostStolenCount, approvedIMEIB10Count, PairingTypesData, ActivePairsData, PairsClassificationData, DeviceStatusData, DeviceTrendData, MostStolenBrandsData, uniqueOperatorWiseTrend, granularity, totalIMEIs, compliantIMEIs, nonCompliantIMEIs, ApprovedIMEIsCount, pairedIMEIs, reportedDevices, registeredIMEIs, TotalOperatorWiseIMEIsCount, TotalOperatorWiseBlockingCount, TotalIMEIsCount, detailIMEIs, uniqueLostStolenDeviceTrend, operatorsArray} = this.state;
+    const {apiFetched, dashboardLastUpdate, OperatorWiseIMEIsData, OperatorWiseTrendData, OperatorWiseBlockingData, TotalIMEIsData, RegisteredDeviceTechnologyData, TopRegisteredBrandsData, dashBoardTotalData, TotalLostStolenCount, approvedIMEIB10Count, PairingTypesData, ActivePairsData, PairsClassificationData, DeviceStatusData, DeviceTrendData, MostStolenBrandsData, uniqueOperatorWiseTrend, granularity, totalIMEIs, compliantIMEIs, nonCompliantIMEIs, ApprovedIMEIsCount, pairedIMEIs, reportedDevices, registeredIMEIs, TotalOperatorWiseIMEIsCount, TotalOperatorWiseBlockingCount, TotalIMEIsCount, detailIMEIs, uniqueLostStolenDeviceTrend, operatorsArray} = this.state;
     const colorClasses = ['bar1', 'bar2', 'bar3', 'bar4'];
     const stolenBarClasses = ['stolen-bar1', 'stolen-bar2', 'stolen-bar3'];
     return (
@@ -330,12 +330,11 @@ class Dashboard extends PureComponent {
 
                       <div className="box-item-header">
                         <h6 className="item-h6">Total IMEIs</h6>
-                        <h5 className="item-h5">{yAxisFormatter(totalB10Count)}</h5>
+                        <h5 className="item-h5">{yAxisFormatter(TotalIMEIsCount)}</h5>
                       </div>
 
                       <div className="box-item-body">
                         <div className="box-list">
-                          <h5 className="item-h5" style={{color: '#0BD49C'}}>{yAxisFormatter(TotalIMEIsCount)}</h5>
                           <div className="h5-list">
                             {Object.keys(detailIMEIs).map((key) => {
                               return (
